@@ -1,7 +1,7 @@
 # root
 
 module "networking" {
-  source           = "./networking"
+  source           = "./modules/networking"
   vpc_cidr         = local.vpc_cidr
   public_sn_count  = 2
   private_sn_count = 3
@@ -14,7 +14,7 @@ module "networking" {
 }
 
 module "database" {
-  source                 = "./database"
+  source                 = "./modules/database"
   db_storage             = 10
   db_engine_version      = "5.7.22"
   db_instance_class      = "db.t2.micro"
@@ -28,7 +28,7 @@ module "database" {
 }
 
 module "loadbalancing" {
-  source                 = "./loadbalancing"
+  source                 = "./modules/loadbalancing"
   public_sg              = module.networking.public_sg
   public_subnets         = module.networking.public_subnets
   tg_port                = 8000
@@ -43,7 +43,7 @@ module "loadbalancing" {
 }
 
 module "compute" {
-  source              = "./compute"
+  source              = "./modules/compute"
   public_sg           = module.networking.public_sg
   public_subnets      = module.networking.public_subnets
   instance_count      = 1
