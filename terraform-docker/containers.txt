@@ -1,0 +1,3 @@
+nodered-prod-h79r: 172.17.0.2:1880
+grafana-prod-i0eb: 172.17.0.3:3000
+influxdb-prod-275t: 172.17.0.4:8086
