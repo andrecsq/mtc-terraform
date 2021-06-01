@@ -50,13 +50,13 @@ module "compute" {
   instance_type       = "t3.micro"
   vol_size            = 10
   key_name            = "mtckey"
-  public_key_path     = "/home/ubuntu/.ssh/keymtc.pub"
-  user_data_path      = "${path.root}/user_data.tpl"
+  public_key_path     = "${var.ssh_keys_path}/keymtc.pub"
+  user_data_path      = "${path.root}/scripts/user_data.tpl"
   db_endpoint         = module.database.db_endpoint
   dbname              = var.dbname
   dbuser              = var.dbuser
   dbpassword          = var.dbpassword
   lb_target_group_arn = module.loadbalancing.lb_target_group_arn
   tg_port             = 8000
-  private_key_path    = "/home/ubuntu/.ssh/keymtc"
+  private_key_path    = "${var.ssh_keys_path}/keymtc"
 }

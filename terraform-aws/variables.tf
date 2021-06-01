@@ -6,6 +6,10 @@ variable "access_ip" {
   type = string
 }
 
+variable "ssh_keys_path" {
+  type = string
+}
+
 #-------database variables
 
 variable "dbname" {
